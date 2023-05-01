@@ -1,0 +1,8 @@
+#Exercício: enviar código criado por você com a centralização de alguma base de dados (nativa, externa ou criada por você)"
+#Pacote para o exercício - iris#
+install.packages("iris")
+View(iris)
+#Cálculo: regressão binomial#
+petala_1 <- rnbinom(300, mu = 3, size = 10) 
+#Desvio padrão#
+sd(petala_1)
