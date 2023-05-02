@@ -1,0 +1,22 @@
+#Bootstrapping - forma de reamostragem (ou amostragem repetida) em que amostras de mesmo tamanho são realizadas sucessivas vezes, com reposição. 
+#Bootstrapping é muito útil para gerar melhores conclusões sobre os dados quando temos uma amostra pequena ou quando não sabemos muito sobre a distribuição real dos dados!
+#Partição - forma específica de amostragem em que separamos os dados em 70-30 ou 80-20, para que um algoritmo possa aprender (na partição maior) e ser testado (na partição menor). 
+
+pacman::p_load(iris, dplyr, htmltools, leaflet, leaflet.extras, leaflet.minicharts, leafpop, plotly, rgdal, sf, tidyr)
+
+#Exercício: criar código com a utilização de técnica bootstrapping#
+distNormalSimulacao <- rnorm(100)
+dist_norm <- distNormalSimulacao
+summary(dist_norm)
+sample(dist_norm, 10, replace = FALSE)
+set.seed(100)
+boot_dist_norm <- replicate(5, sample(dist_norm, 5, replace = TRUE))
+View(boot_dist_norm)
+#Teste estatístico#
+boot_estat <- replicate(5, mean(sample(boot_dist_norm, 5, replace = TRUE)))
+boot_estat_2 <- replicate(10, mean(sample(boot_dist_norm, 10, replace = TRUE)))
+#Comparação#
+mean(boot_estat) 
+# 0.1869057
+mean(boot_estat_2) 
+#0.2432474
