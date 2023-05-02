@@ -1,0 +1,10 @@
+install.packages("iris")
+View(iris)
+#Exercício: recuperar ou identificar um dado ou informação usando indexação"
+#Experimentando indexadores#
+#[ ] - sempre retorna um objeto da mesma classe que o original#
+iris[1:100, 1:5] 
+#[[ ]] - é usado para extrair elementos de uma lista ou data frame#
+iris[['Sepal.Width']][1]
+#O operador $ é usado para extrair elementos nomeados de uma lista ou data frame#
+iris$Sepal.Length
