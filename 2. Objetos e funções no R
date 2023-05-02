@@ -1,0 +1,12 @@
+#Exemplo de objeto simples#
+brics <- ("africa do sul", "brasil", "china", "india", "russia")
+#Exemplo de objeto complexo#
+#WDI - banco de dados do Banco Mundial#
+pacman::p_load(WDI, ggplot2, ggrepel, png, grid)
+View(WDI)
+interest = WDI(country='BR',
+                indicator = 'FR.INR.RINR',
+                start=2000, end=2010)
+> View(interest)
+> Brasil <- interest
+str(Brasil)
