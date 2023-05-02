@@ -1,0 +1,6 @@
+pacman::p_load(iris, dplyr, htmltools, leaflet, leaflet.extras, leaflet.minicharts, leafpop, plotly, rgdal, sf, tidyr)
+#Exercício: criar código com utilização de funções vetorizadas (ou funções de repetição ou funções da família apply)#
+#Aplly e variações#
+apply(iris[ ,-5], 1, mean)
+lapply(iris[, -2], mean) #Mensagem de erro: in mean.default(X[[i]], ...) :   argumento não é numérico nem lógico: retornando NA
+sapply(iris[ , 1:2], hist)
