@@ -1,5 +1,6 @@
 install.packages('eeptools')
 library(eeptools)
+#Exercício: criar um data frame#
 paises_brics <- c("África do Sul", "Brasil", "China", "Índia", "Rússia")
 colocação_pib_brics <- ("5","3", "1", "2", "4")
 brics_pib <- data.frame(paises_brics, colocação_pib_brics)
