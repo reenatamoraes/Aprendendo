@@ -1,0 +1,7 @@
+pacman::p_load(iris, dplyr, htmltools, leaflet, leaflet.extras, leaflet.minicharts, leafpop, plotly, rgdal, sf, tidyr)
+#Exercício: criar código com pelo menos uma variável normal, uma variável binomial e uma variável de index#
+#Variável normal#
+v_normal <- rnorm(50)
+#Variável binomial - casos, tamanho e probabilidade#
+v_binomial <- rbinom(100, 2, 0.5)
+#Variável de index#
