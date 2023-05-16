@@ -19,5 +19,10 @@ sinistros_2020 <- sinistrosRecife2020Raw
 sinistros_2021 <- sinistrosRecife2021Raw
 
 
-#Unindo aos demais#
+#Unindo aos demais - comando rbind#
 
+colunas_iguais <- names(sinistros_2020) [intersect(names(sinistros_2020), names(sinistros_2021))]
+
+sinistros_2020 <- sinistros_2020 %>% select(all_of(colunas_iguais))
+
+sinistros_recife <- rbind(sinistros_2020, sinistros_2021)
