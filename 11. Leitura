@@ -21,9 +21,15 @@ microbenchmark(a <- saveRDS(sinistrosRecifeRaw, "bases_tratadas/sinistrosRecife.
 
 microbenchmark(a <- readRDS('bases_tratadas/sinistrosRecife.rds'), b <- read.csv2('bases_tratadas/sinistrosRecife.csv', sep = ';'), times = 10L)
 
+#Resultado: vantagens e desvantagens
 
+Vantagens de cada
+- Arquivo nativo (R) consome menos espaço 
+- Arquivo não nativo é mais facilmente acessível a outros pesquisadores
 
-
+Desvantagens
+- Arquivo em R para ser aberto depende da instalação do programa em máquina e domínio de comandos
+- Arquivo não nativo, quando usado no R, pode apresentar alterações que comprometem o acesso e a interpretação do dado, além de serem mais pesados#
 
 
 pacman::p_load(dplyr)
