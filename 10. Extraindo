@@ -1,0 +1,18 @@
+#Compartilhar código extraindo dados de 3 fontes#
+
+#1. UCI#
+
+census_income <- read.table("https://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.data", header = FALSE, sep = ',', dec = '.', col.names	= c('age', 'workclass', 'fnlwgt', 'education', 'education-num', 'marital-status', 'occupation', 'relationship', 'race', 'sex', 'capital-gain', 'capital-loss', 'hours-per-week', 'native-country', 'class'))
+
+#2. Prefeitura do Recife#
+
+perfil_vacinadoscovid_22 <- read.csv2("http://dados.recife.pe.gov.br/dataset/perfil-das-pessoas-vacinadas-covid-19/resource/9664de94-9f07-4adc-848d-b6ef56510762")
+
+#3. XML Data Repository#
+
+install.packages('readxl')
+library(readxl)
+
+swiss_prot <-read_excel("https://www.expasy.org/resources/uniprotkb-swiss-prot")
+
+#obs. houve erro#
