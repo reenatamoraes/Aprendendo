@@ -1,0 +1,22 @@
+#Compartilhar um código em que você executa um processo de descoberta em uma base diferentes daquela do exercício.
+
+pacman::p_load(funModeling, tidyverse) 
+
+#Bando de dados do Banco Mundial - WDI
+
+install.packages('WDI')
+library(WDI)
+
+dados_2010_2020 <- WDI(country = "all", indicator = "NY.GDP.PCAP.CD", start = 2010, end = 2020)
+
+
+glimpse(dados_2010_2020) # olhada nos dados
+status(dados_2010_2020) # estrutura dos dados (missing etc)
+freq(dados_2010_2020) # frequência das variáveis fator
+plot_num(dados_2010_2020) # exploração das variáveis numéricas
+profiling_num(dados_2010_2020) # estatísticas das variáveis numéricas
+
+#Outras explorações
+
+WDIsearch("GDP per capita")
+
