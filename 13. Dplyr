@@ -1,4 +1,20 @@
 #Compartilhe com a gente um código criado por você com a aplicação de pelo menos um sumário, um agrupamento, uma manipulação de casos e uma manipulação de colunas."
 
-samu_at_2022 <- read.csv2('http://dados.recife.pe.gov.br/dataset/2676fd74-8b40-4248-a1da-0dc45f176b7b/resource/7c005351-2d14-46cf-b2f0-6622a5553b30/download/ocorrencias2022.csv'm , sep = ';', encoding = 'UTF-8')
+pacman::p_load(tidyverse, dplyr, htmltools, leaflet, leaflet.extras, leaflet.minicharts, leafpop, plotly, rgdal, sf, tidyr)
 
+#Dados: Samu - atendimentos 2022
+
+samu_2022 <- read.csv2('http://dados.recife.pe.gov.br/dataset/2676fd74-8b40-4248-a1da-0dc45f176b7b/resource/7c005351-2d14-46cf-b2f0-6622a5553b30/download/ocorrencias2022.csv', sep = ';', encoding = 'UTF-8')
+
+#Casos apresentados
+
+count(samu_2022,sexo)
+count(samu_2022, idade)
+
+samu_2022 %>% group_by(sexo) %>% summarise(avg = mean(idade))
+
+arrange(samu_2022, idade)
+
+samu_2022 %>% select(idade, sexo) %>% arrange(idade)
+
+samu_2022 %>% rename(genero = sexo)
