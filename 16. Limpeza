@@ -1,0 +1,20 @@
+pacman::p_load(funModeling, tidyverse, data.table, dplyr, tidyverse)
+
+pacman::p_load(funModeling, tidyverse, data.table, dplyr, tidyverse)
+
+general_data<-fread("https://covid.ourworldindata.org/data/owid-covid-data.csv")
+
+G7 <- c("USA", "Canada", "UK", "France", "Germany", "Italy", "Japan")
+
+G7_filter<- general_data %>% filter(location %in% G7)
+
+G7_all <- G7_filter %>% group_by(location) %>% mutate(row = row_number()) %>% select(location, new_cases, new_deaths)
+
+status(G7_all) 
+freq(G7_all) 
+plot_num(G7_all) 
+profiling_num(G7_all) 
+
+G7_all %>% filter(new_cases < 0)
+
+G7_all <- G7_all %>% filter(new_cases>=0)
