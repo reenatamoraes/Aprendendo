@@ -1,0 +1,17 @@
+pacman::p_load(data.table, dplyr, tidyverse, validate)
+
+general_data <- fread("https://covid.ourworldindata.org/data/owid-covid-data.csv")
+
+G7 <- c("USA", "Canada", "UK", "France", "Germany", "Italy", "Japan")
+
+G7_filter<- general_data %>% filter(location %in% G7)
+
+G7_all <- G7_filter %>% group_by(location) %>% mutate(row = row_number()) %>% select(location, new_cases, new_deaths)
+
+regras_G7 <- validator(new_cases >= 0, new_deaths >= 0)
+
+validacao_G7 <- confront(G7_all, regras_G7)
+
+summary(validacao_G7)
+
+plot(validacao_latin_america)
