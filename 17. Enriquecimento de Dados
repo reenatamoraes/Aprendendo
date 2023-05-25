@@ -1,0 +1,9 @@
+pacman::p_load(funModeling, tidyverse, data.table, dplyr, tidyverse, WDI)
+
+dados_2010_2020 <- WDI(country = "all", indicator = "NY.GDP.PCAP.CD", start = 2010, end = 2020)
+
+dados_1970_1980 <- WDI(country = "all", indicator = "NY.GDP.PCAP.CD", start = 1970, end = 1980)
+
+#Joint
+
+dados_final <- left_join(dados_2010_2020, dados_1970_1980, by = c('country' = 'iso2c'))
