@@ -1,0 +1,27 @@
+#Compartilhe com a gente um código criado por você em que usa estatísticas com outra base de dados. Dica: use a base USArrests
+
+pacman::p_load(funModeling, tidyverse, data.table, dplyr, gmodels, USArrests, fBasics)
+
+View(USArrests)
+
+summary(USArrests)
+
+basicStats(USArrests[ , c(1:4)])
+
+table(USArrests$Assault)
+
+prop.table(table(USArrests$Assault))
+
+#Estatísticas
+
+mean(USArrests$Assault)
+
+median(USArrests$Assault)
+
+quantile(USArrests$Assault, probs=0.10)
+
+quantile(USArrests$Assault, probs=0.50)
+
+quantile(USArrests$Assault, probs=0.90)
+
+sd(USArrests$Assault)
