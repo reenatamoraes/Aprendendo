@@ -1,0 +1,18 @@
+#Compartilhe com a gente um código criado por você com um processo de one hot encoding ou de discretização,
+#e também a transformação dos fatores de uma base de dados em 3 tipos: mais frequente, segundo mais frequente e outros.
+
+pacman::p_load(funModeling, tidyverse, data.table, dplyr, tidyverse, ade4, arules)
+
+G7 <- c("USA", "Canada", "UK", "France", "Germany", "Italy", "Japan")
+
+#Colocação dos países segundo a renda anual
+
+G7_rich_2021 <- c(1, 7, 4, 5, 3, 6, 2)
+
+recode <- factor(c("mais rico", "menos rico"), levels = c("mais rico", "menos rico"), labels = c(1, 7))
+
+mais_rico <- c("mais rico", "menos rico") 
+
+recode <- factor(mais_rico, levels = c("mais rico", "menos rico"), labels = c(1, 7))
+
+G7_2021 <- factor(mais_rico, levels = levels(recode), labels = labels(recode))
