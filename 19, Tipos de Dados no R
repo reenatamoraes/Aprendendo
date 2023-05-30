@@ -1,0 +1,25 @@
+#Compartilhar código em que você cria uma estrutura de fatores.
+
+pacman::p_load(funModeling, tidyverse, data.table, dplyr, tidyverse)
+
+G7 <- c("USA", "Canada", "UK", "France", "Germany", "Italy", "Japan")
+
+as.factor(G7)
+
+#Falam inglês - English = 0
+#Falam outro idioma - Other = 1
+
+recorde <- c(USA = 0, Canada = 0, UK = 0, France = 1, Germany = 1, Italy = 1, Japan = 1)
+
+G7_language <- factor(G7, levels = recode, labels = names(recode))
+
+#Resultado
+> is.character(G7_language)
+[1] FALSE
+> is.factor(G7_language)
+[1] TRUE
+> is.numeric(G7_language)
+[1] FALSE
+> is.language(G7_language)
+[1] FALSE
+
