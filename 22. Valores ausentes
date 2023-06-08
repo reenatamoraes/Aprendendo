@@ -1,0 +1,21 @@
+#Compartilhar shadow matrix e um teste de aleatoriedade de valores ausentes
+
+pacman::p_load("data.table", "funModeling", "tidyverse")
+
+perfil_vacinados_2022 <- read.csv2("http://dados.recife.pe.gov.br/dataset/perfil-das-pessoas-vacinadas-covid-19/resource/9664de94-9f07-4adc-848d-b6ef56510762")
+
+view (perfil_vacinados_2022)
+
+status(perfil_vacinados_2022)
+
+#Shadow matrix
+
+shadowwmatrix_perfil_vacinados_2022 <- as.data.frame(abs(is.na(perfil_vacinados_2022)))
+
+view(shadowmatrix_perfil_vacinados_2022)
+
+shadowmatrix_perfil_vacinados_2022 <- shadowmatrix_perfil_vacinados_2022[which(sapply(shadowmatrix_perfil_vacinados_2022, sd) > 0)]
+
+#Correlações
+
+round(cor(shadowmatrix_perfil_vacinados_2022) , 2)
