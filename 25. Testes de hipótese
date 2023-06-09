@@ -1,2 +1,7 @@
 #Código no qual se usa correlação ou qui quadrado.
+#Atividade incompleta#
+ samu_2022 <- fread('http://dados.recife.pe.gov.br/dataset/2676fd74-8b40-4248-a1da-0dc45f176b7b/resource/7c005351-2d14-46cf-b2f0-6622a5553b30/download/ocorrencias2022.csv', dec = '.')
+ 
+ cor.test(as.numeric(samu_2022$data), as.numeric(samu_2022$hora_minuto))
 
+#observações finitas insuficientes#
