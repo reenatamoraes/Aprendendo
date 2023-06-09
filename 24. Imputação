@@ -1,0 +1,29 @@
+#écnica de imputação numérica e uma técnica de hot deck para substituir NA.
+#Atividade incompleta#
+
+pacman::p_load(data.table, Hmisc, VIM)
+
+#Base de dados - iris
+
+irisDT <- iris %>% setDT()
+
+#Imputação numérica
+
+(irisNASeed <- round(runif(10, 1, 50)))
+
+iris$wind <- rep(NA, nrow(iris))
+
+(iris$wind[irisNASeed] <- NA)
+
+#Média e mediana
+irisDT$Petal.Length <- impute(irisDT$Petal.Length, fun = mean)
+irisDT$Petal.Length <- impute(irisDT$Petal.Length, fun = median)
+
+is.imputed(irisDT$Petal.Length)
+table(is.imputed(irisDT$Petal.Length))
+
+#Atividade incompleta#
+
+
+
+
