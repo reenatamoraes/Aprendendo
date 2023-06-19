@@ -1,0 +1,28 @@
+#Compartilhe com a gente um código criado por você usando criando pelo menos 3 (três) gráficos vistos na vídeo aula.
+
+pacman::p_load(dplyr, ggplot2)
+
+library(datasets)
+data(airquality)
+
+#Gráficos - testando qual ilustra melhor os dados
+
+#Boxplot 
+
+ggplot(airquality, aes(x = Day, y = Ozone)) + geom_boxplot()
+
+#Dispersão
+ggplot(airquality, aes(x = Day, y = Ozone)) + geom_point()
+
+#Histograma (1 variável por vez) - não parece o mais adequado
+
+ggplot(airquality, aes(x = Ozone)) + geom_histogram()
+  
+ggplot(airquality, aes(x = Day)) + geom_histogram()
+
+#Barras - parece ser o mais adequado para se notar a dinâmica entre o dia registrado e o nível de ozônio detectado
+ggplot(airquality, aes(x = Day, y = Ozone)) +
+  geom_bar(stat = "identity")
+
+
+
