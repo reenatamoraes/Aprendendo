@@ -1,0 +1,38 @@
+#Compartilhe com a gente uma aplicação de comparação entre associações usando alguma outra base, que pode ser nativa do R ou qualquer outra importada por você.
+
+pacman::p_load(ccaPP, lsa, minerva, Rfast)
+
+#Função para rodar as associações
+
+multi.cor <- function(x, y) {
+  c(
+    cor = cor(x, y), # Correlação
+    dcor = dcor(x, y), # Distance correlation
+    cosine = cosine(x, y), # Distância do Cosseno 
+    maxCor = maxCorProj(x, y), # Maximal correlation
+    MIC = mine (x, y) #  Maximal Information Coefficient
+  )
+}
+
+#Pacote escolhido - Iris
+
+Petala_1 <- iris$Petal.Length
+Sepala_1 <- iris$Sepal.Length
+
+#1. Linear
+Petala_2 <- Petala_1 - runif(10, 1, 10)
+
+plot(Sepala_1, Petala_2)
+corList2 <- multi.cor(Sepala_1, Petala_2)
+corList2 <- corList2[c(1,5,6,7, 15)]
+corList2
+
+#2. Quadrática
+A <- runif(100, 1, 10)
+B <- 5 - 1.7*A + A^2
+
+plot(A, B)
+
+corList <- multi.cor(A,B)
+corList <- corList[c(2, 4 ,6, 8, 10, 12)]
+corList
