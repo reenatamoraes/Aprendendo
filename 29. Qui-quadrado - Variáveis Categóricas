@@ -1,0 +1,22 @@
+#Compartilhe com a gente uma aplicação de associação usando alguma outra combinação da base câncer de mama que não seja a demonstrada no vídeo
+
+pacman::p_load(data.table, ggplot2)
+
+#Base de dados - CAR evolution
+breast_cancer <- fread('https://raw.githubusercontent.com/hugoavmedeiros/cp_com_r/master/bases_tratadas/breast_cancer.csv', stringsAsFactors = T)
+View(breast_cancer)
+
+#Tabela de contingência
+bc_table <- table(breast_cancer$idade, breast_cancer$tumor_tamanho)
+bc_table
+ 
+#Gráfico de dispersão
+ggplot(breast_cancer) + aes(x = tumor_tamanho, fill = idade) + geom_bar(position = "fill")
+ 
+#Qui-quadrado
+bc_test <- chisq.test(bc_table)
+bc_test$observed
+bc_test$expected
+
+#Corplot das variáveis
+corrplot(bc_test$residuals, is.corr = FALSE)
