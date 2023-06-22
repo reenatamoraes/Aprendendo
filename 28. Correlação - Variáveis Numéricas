@@ -1,0 +1,37 @@
+#Compartilhe com a gente uma aplicação de correlação usando alguma outra base, que pode ser nativa do R ou qualquer outra importada por você.
+
+pacman::p_load(corrplot, dplyr, ggplot2, tidyverse, WDI)
+
+#Banco de dados - WDI, dados da OMS 
+
+indicadores <- c("SP.POP.TOTL", "SH.DYN.MORT", "SH.STA.MMRT", "SH.TBS.INCD")
+paises <- "all"
+
+dados_oms <- WDI(indicator = indicadores, start = 1970, end = 2022)
+view (dados_oms)
+
+#País selecionado: China
+oms_china <- WDI(indicator = indicadores, country = "CN", start = 1970, end = 2022)
+view(oms_china)
+
+#SH.DYN.MORT - mortality rate, under -5 per 1,000 live births
+#SH.TBS.INDC - incidence of tuberculosis per 100,000 people
+china1 <- oms_china %>% select(year, SH.DYN.MORT, SH.TBS.INDC)
+
+#Tabela de correlação
+cor(china1)
+
+#Gráficos de dispersão pareados das variáveis
+pairs(china1)
+
+#Corrplot das variáveis
+chinaCor <- cor(china1)
+
+corrplot(chinaCor, method = "number", order = 'alphabet')
+
+corrplot(chinaCor, order = 'alphabet')
+
+
+
+
+
